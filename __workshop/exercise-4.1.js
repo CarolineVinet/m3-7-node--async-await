@@ -1,6 +1,18 @@
-const request = require('request-promise');
+const request = require("request-promise");
 
-// getDadJoke
+const dadJoke = {
+  uri: "https://icanhazdadjoke.com/",
+  headers: {
+    Accept: "application/json",
+  },
+  json: true,
+};
+
+const getDadJoke = () => {
+  return request(dadJoke).then((response) => {
+    return response.joke;
+  });
+};
 
 // 4.1
-// getJoke().then((data) => console.log(data));
+getDadJoke().then((data) => console.log(data));
